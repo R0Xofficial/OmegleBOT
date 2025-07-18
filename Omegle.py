@@ -165,11 +165,11 @@ async def help_command(update: Update, context: CallbackContext) -> None:
     
     admin_text = (
         "\n\n*Admin Commands:*\n"
-        "/addsudo <user_id> <username> - Add an admin\n"
-        "/delsudo <user_id> - Remove an admin\n"
-        "/ban <user_id> <reason> - Ban a user\n"
-        "/unban <user_id> - Unban a user\n"
-        "/checkban <user_id> - Check a user's ban status"
+        "/addsudo &lt;user_id&gt; &lt;username&gt; - Add an admin\n"
+        "/delsudo &lt;user_id&gt; - Remove an admin\n"
+        "/ban &lt;user_id&gt; &lt;reason&gt; - Ban a user\n"
+        "/unban &lt;user_id&gt; - Unban a user\n"
+        "/checkban &lt;user_id&gt; - Check a user's ban status"
     )
     
     full_text = user_text
@@ -563,7 +563,7 @@ def main() -> None:
     application.add_handler(CallbackQueryHandler(handle_callback))
 
     # Message Handler (must be one of the last)
-    message_filters = (filters.TEXT | filters.PHOTO | filters.VIDEO | filters.ANIMATION | filters.STICKER) & ~filters.COMMAND & private_filter
+    message_filters = (filters.TEXT | filters.PHOTO | filters.VIDEO | filters.ANIMATION | filters.Sticker.ALL) & ~filters.COMMAND & private_filter
     application.add_handler(MessageHandler(message_filters, message_handler))
 
     logger.info("OmegleBot is starting...")
