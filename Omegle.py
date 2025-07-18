@@ -16,6 +16,9 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("telegram.ext").setLevel(logging.WARNING)
+
 logger = logging.getLogger(__name__)
 
 # --- Database ---
@@ -165,11 +168,11 @@ async def help_command(update: Update, context: CallbackContext) -> None:
     
     admin_text = (
         "\n\n*Admin Commands:*\n"
-        "/addsudo &lt;user_id&gt; &lt;username&gt; - Add an admin\n"
-        "/delsudo &lt;user_id&gt; - Remove an admin\n"
-        "/ban &lt;user_id&gt; &lt;reason&gt; - Ban a user\n"
-        "/unban &lt;user_id&gt; - Unban a user\n"
-        "/checkban &lt;user_id&gt; - Check a user's ban status"
+        "`/addsudo <user_id> <username>` - Add an admin\n"
+        "`/delsudo <user_id>` - Remove an admin\n"
+        "`/ban <user_id> <reason>` - Ban a user\n"
+        "`/unban <user_id>` - Unban a user\n"
+        "`/checkban <user_id>` - Check a user's ban status"
     )
     
     full_text = user_text
